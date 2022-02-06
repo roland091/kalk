@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Borka Roland">
+    <link rel="stylesheet" href="bootstrap-5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Havi kalkulátor</title>
+</head>
+
+<body>
+    <header>
+        <h1>Havi kiadás kalkulátor</h1>
+    </header>
+    <div id="tartalom">
+        <form>
+
+            <div id="kiadasok">
+                <!--KIADÁSOK FORMJA-->
+                <div>
+                    <div class="inputok" id="bevetel">
+                        <!--BEVÉTEL-->
+                        <label for="hKereset">Havi kereset:</label>
+                        <input type="text" name="hKereset" id="hKereset"><span>Ft</span>
+                    </div>
+                    <h3>Alapvető havi kiadások:</h3>
+                    <div class="inputok">
+                        <label for="kE1">Víz:</label>
+                        <input type="text" name="kE1" id="kE1"><span>Ft</span>
+                    </div>
+                    <div class="inputok">
+                        <label for="kE2">Villany:</label>
+                        <input type="text" name="kE2" id="kE2"><span>Ft</span>
+                    </div>
+                    <div class="inputok">
+                        <label for="kE3">Gáz:</label>
+                        <input type="text" name="kE3" id="kE3"><span>Ft</span>
+                    </div>
+                    <div class="inputok">
+                        <label for="kE4">Közös költésg:</label>
+                        <input type="text" name="kE4" id="kE4"><span>Ft</span>
+                    </div>
+                    <div class="inputok">
+                        <label for="kE5">Albérlet havi díj:</label>
+                        <input type="text" name="kE5" id="kE5"><span>Ft</span>
+                    </div>
+                </div>               
+                <!--További kiadások DIV-e-->
+                <div id="tkiadasok">
+                    <h3>Add meg további kiadásaidat:</h3>
+                    <div>
+                        <label for="CkN1">1.:</label>
+                        <input type="text" name="CkN1" placeholder="Kiadás Neve" id="CkN1">
+                        <input type="text" name="CkE1" placeholder="Kiadás Összege" id="CkE1"><span>Ft</span>
+                    </div>
+                    <div>
+                        <label for="CkN2">2.:</label>
+                        <input type="text" name="CkN2" placeholder="Kiadás Neve" id="CkN2">
+                        <input type="text" name="CkE2" placeholder="Kiadás Összege" id="CkE2"><span>Ft</span>
+                    </div>
+                    <div>
+                        <label for="CkN3">3.:</label>
+                        <input type="text" name="CkN3" placeholder="Kiadás Neve" id="CkN3">
+                        <input type="text" name="CkE3" placeholder="Kiadás Összege" id="CkE3"><span>Ft</span>
+                    </div>
+                    <div>
+                        <label for="CkN4">4.:</label>
+                        <input type="text" name="CkN4" placeholder="Kiadás Neve" id="CkN4">
+                        <input type="text" name="CkE4" placeholder="Kiadás Összege" id="CkE4"><span>Ft</span>
+                    </div>
+                    <div>
+                        <label for="CkN5">5.:</label>
+                        <input type="text" name="CkN5" placeholder="Kiadás Neve" id="CkN5">
+                        <input type="text" name="CkE5" placeholder="Kiadás Összege" id="CkE5"><span>Ft</span>
+                    </div>
+                    <div>
+                        <label for="CkN6">6.:</label>
+                        <input type="text" name="CkN6" placeholder="Kiadás Neve" id="CkN6">
+                        <input type="text" name="CkE6" placeholder="Kiadás Összege" id="CkE6"><span>Ft</span>
+                    </div>
+                </div>
+                <!--Tobávvi kiadások DIV VÉGE-->
+
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">A megadott értékek összesítése:</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <!-- KIADAÁS LISTA -->
+                                <h4>Egyéb kiadások listája:</h4>
+                                <div class="d-flex justify-content-between">
+                                <div class=""> 
+                                <ul">
+                                    <span id="list1"></span>
+                                    <span id="list2"></span>
+                                    <span id="list3"></span>
+                                    <span id="list4"></span>
+                                    <span id="list5"></span>
+                                    <span id="list6"></span>
+                                </ul>
+                                </div>
+                                <div class="">
+                                <ul>
+                                    <span class="ertoszt" id="list11"></span>
+                                    <span class="ertoszt" id="list22"></span>
+                                    <span class="ertoszt" id="list33"></span>
+                                    <span class="ertoszt" id="list44"></span>
+                                    <span class="ertoszt" id="list55"></span>
+                                    <span class="ertoszt" id="list66"></span>
+                                </ul>
+                                </div>
+                                </div>
+                            </div>
+                            <div>
+                                <!-- ÖSSZESÍTÉS +/- LISTA -->
+                                <h4>Rezsi Összege:</h4>
+                                <p><span id="Trezsi">-10000</span></p>
+                                <h4>Kiadások összege:</h4>
+                                <p><span id="Tkiadas">-10000</span></p>
+                                <h4>Maradék összege:</h4>
+                                <p><span id="sporolt">+20000</span></p>
+                            </div>
+                            <div class="modal-footer">
+                                
+                                <button type="button" class="btn gomb" onclick="window.print()">Nyomtatás</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Modal Vége!!-->
+            <!-- Button trigger modal/KULDÉS -->
+            <div class="d-flex justify-content-center"><button type="button" class="btn gomb"
+                    onclick="kuldes(this.form)" data-bs-toggle="modal" data-bs-target="#exampleModal">Küldés</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        Készítette, Borka Roland
+    </footer>
+
+    <script src="bootstrap-5.1.3/js/bootstrap.min.js"></script>
+    <script src="myscript.js"></script>
+</body>
+
+</html>
